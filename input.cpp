@@ -1,18 +1,19 @@
 #include <iostream>
 #include <windows.h>
-
-
 int main(){
+
+    const BYTE scanCode = MapVirtualKey(VK_LCONTROL, MAPVK_VK_TO_VSC);
 
 while (true){
 
     Sleep(100);
 
+
     // Ctrl C
     if(GetAsyncKeyState(VK_XBUTTON2)){
 
         // Pressionar tecla CONTROL
-        keybd_event(VK_LCONTROL, 0xA2, 0x0001, 0); 
+        keybd_event(VK_LCONTROL, scanCode, KEYEVENTF_EXTENDEDKEY, 0); 
         Sleep(50);
 
         // Pressionar tecla C
@@ -24,7 +25,7 @@ while (true){
         Sleep(50);
 
         // Soltar tecla CONTROL
-        keybd_event(VK_LCONTROL, 0xA2, 0x0002, 0);
+        keybd_event(VK_LCONTROL, scanCode, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
         Sleep(50);
         
         std::cout<<"Feito!"<<std::endl;
@@ -36,7 +37,7 @@ while (true){
         if(GetAsyncKeyState(VK_XBUTTON1)){
 
         // Pressionar tecla CONTROL
-        keybd_event(VK_LCONTROL, 0xA2, 0x0001, 0); 
+        keybd_event(VK_LCONTROL, scanCode, KEYEVENTF_EXTENDEDKEY, 0); 
         Sleep(50);
 
         // Pressionar tecla C
@@ -48,8 +49,8 @@ while (true){
         Sleep(50);
 
         // Soltar tecla CONTROL
-        keybd_event(VK_LCONTROL, 0xA2, 0x0002, 0);
-        Sleep(50);
+        keybd_event(VK_LCONTROL, scanCode, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
+        Sleep(50);  
         
         std::cout<<"Feito!"<<std::endl;
         
